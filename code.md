@@ -3,13 +3,10 @@ Ques 1.Given an integral number, determine if it's a square number:
 In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
 
 My Answer:
-var isSquare = function(n){
-let number = Math.floor(Math.sqrt(n))
-if (value \* value === n){
-return true}
-else {
-return false}
-}
+var isSquare = function(n) {
+let number = Math.sqrt(n);
+return Number.isInteger(number);
+};
 
 Good Answers:
 i.function isSquare(n) {
@@ -22,15 +19,16 @@ ii. const isSquare = n => Number.isInteger(Math.sqrt(n));
 Ques. 2. Counting the vowels in a given string. consider vowels as a,e,i,o,u.
 /////
 My Answer:
+let vowelsCount = 0;
 function getCount(str) {
 let vowels = ["a", "e", "i", "o", "u"];
-let vowelsCount = 0;
-for (vowels of str) {
-if (vowels === str) {
+for (let i = 0; i < str.length; i++) {
+for (let j = 0; j < vowels.length; j++) {
+if (str[i] == vowels[j]) {
 vowelsCount++;
 }
 }
-
+}
 return vowelsCount;
 }
 //////
@@ -114,7 +112,6 @@ if (count % 2 != 0) {
 result = arr[i];
 break;
 }
-
 }
 }
 return result;
@@ -371,7 +368,7 @@ return arr
 }
 
 Ques 10. <..////////..> solved for Ebere
-A function that checks if a number is a palindrome and returns it else it looks for the next palindrome
+A function that checks if a number is a palindrome and returns it else it returns the next palindrome
 solution: function palinDrome(n) {
 let arr = [];
 let a = String(n);
@@ -387,4 +384,141 @@ n++;
 }
 return n;
 }
+}
+
+Ques. 11. Write a program that will calculate the number of trailing zeros in a factorial of a given number.
+
+copied Answer: function zeros (n) {
+var zs = 0;
+while(n>0){
+n=Math.floor(n/5);
+zs+=n
+}
+return zs;
+}
+
+ii. function zeros (n) {
+let q = Math.floor(n/5);
+return (q < 1)? 0 : q + zeros(q);
+}
+
+iii. function zeros (n) {
+let f = 0;
+
+while (n >= 5) {
+n = Math.floor(n / 5);
+f += n;
+}
+
+return f;
+}
+
+iv. function zeros (n) {
+var count = 0;
+
+do {
+n = Math.floor(n/5);
+count += n;
+} while(n >= 5);
+
+return count;
+}
+
+Ques 12. How to convert figures to roman numerals
+solution:
+function solution(number) {
+var map = {
+M: 1000,
+CM: 900,
+D: 500,
+CD: 400,
+C: 100,
+XC: 90,
+L: 50,
+XL: 40,
+X: 10,
+IX: 9,
+V: 5,
+IV: 4,
+I: 1
+},
+output = "";
+
+for (var i in map) {
+while (number >= map[i]) {
+output += i;
+number -= map[i];
+}
+}
+return output;
+}
+
+Ques 13: Once upon a time, on a way through the old wild west,…
+
+… a man was given directions to go from one point to another. The directions were "NORTH", "SOUTH", "WEST", "EAST". Clearly "NORTH" and "SOUTH" are opposite, "WEST" and "EAST" too. Going to one direction and coming back the opposite direction is a needless effort. Since this is the wild west, with dreadfull weather and not much water, it's important to save yourself some energy, otherwise you might die of thirst!
+How I crossed the desert the smart way.
+
+The directions given to the man are, for example, the following (depending on the language):
+
+["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"].
+
+or
+
+{ "NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST" };
+
+or
+
+[North, South, South, East, West, North, West]
+
+You can immediatly see that going "NORTH" and then "SOUTH" is not reasonable, better stay to the same place! So the task is to give to the man a simplified version of the plan. A better plan in this case is simply:
+
+["WEST"]
+
+or
+
+{ "WEST" }
+
+or
+
+[West]
+
+Other examples:
+
+In ["NORTH", "SOUTH", "EAST", "WEST"], the direction "NORTH" + "SOUTH" is going north and coming back right away. What a waste of time! Better to do nothing.
+
+The path becomes ["EAST", "WEST"], now "EAST" and "WEST" annihilate each other, therefore, the final result is [] (nil in Clojure).
+
+In ["NORTH", "EAST", "WEST", "SOUTH", "WEST", "WEST"], "NORTH" and "SOUTH" are not directly opposite but they become directly opposite after the reduction of "EAST" and "WEST" so the whole path is reducible to ["WEST", "WEST"].
+Task
+
+Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side).
+
+    The Haskell version takes a list of directions with data Direction = North | East | West | South.
+    The Clojure version returns nil when the path is reduced to nothing.
+    The Rust version takes a slice of enum Direction {NORTH, SOUTH, EAST, WEST}.
+
+See more examples in "Sample Tests:"
+Notes
+
+    Not all paths can be made simpler. The path ["NORTH", "WEST", "SOUTH", "EAST"] is not reducible. "NORTH" and "WEST", "WEST" and "SOUTH", "SOUTH" and "EAST" are not directly opposite of each other and can't become such. Hence the result path is itself : ["NORTH", "WEST", "SOUTH", "EAST"].
+
+    if you want to translate, please ask before translating.
+
+solution: function dirReduc(arr){
+var oppositeDirections = {
+NORTH: 'SOUTH',
+SOUTH: 'NORTH',
+WEST: 'EAST',
+EAST: 'WEST'
+};
+var directions = arr.slice(0);
+for (var i = 0; i < directions.length - 1;) {
+if (oppositeDirections[directions[i]] === directions[i+1]) {
+directions.splice(i, 2);
+i = (i === 0) ? 0 : i - 1;
+} else {
+i += 1;
+}
+}
+return directions;
 }

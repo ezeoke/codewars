@@ -313,7 +313,7 @@
 //     "z"
 //   ];
 
-//   let arr = [...string.toLowerCase()];
+//   let arr = [...string];
 //   let newArr = [];
 //   for (let i = 0; i < alpha.length; i++) {
 //     for (let j = 0; j < arr.length; j++) {
@@ -395,25 +395,25 @@
 // const a = palinDrome("eye");
 // console.log(a);
 
-function palinDrome(n) {
-  let arr = [];
-  let a = String(n);
-  for (let i = a.length - 1; i >= 0; i--) {
-    arr.push(a[i]);
-  }
-  let newArr = Number(arr.join(""));
-  if (n === newArr) {
-    return n;
-  } else {
-    while (n !== Number([...String(n)].reverse().join(""))) {
-      n++;
-    }
-    return n;
-  }
-}
+// function palinDrome(n) {
+//   let arr = [];
+//   let a = String(n);
+//   for (let i = a.length - 1; i >= 0; i--) {
+//     arr.push(a[i]);
+//   }
+//   let newArr = Number(arr.join(""));
+//   if (n === newArr) {
+//     return n;
+//   } else {
+//     while (n !== Number([...String(n)].reverse().join(""))) {
+//       n++;
+//     }
+//     return n;
+//   }
+// }
 
-const a = palinDrome(19);
-console.log(a);
+// const a = palinDrome(19);
+// console.log(a);
 
 // let count = 0;
 // function zeros(n) {
@@ -439,3 +439,130 @@ console.log(a);
 
 // const a = zeros(30);
 // console.log(a);
+
+// function zeros(n) {
+//   var count = 0;
+
+//   do {
+//     n = Math.floor(n / 5);
+//     count += n;
+//   } while (n >= 5);
+
+//   return count;
+// }
+
+// const z = zeros(500000);
+// console.log(z);
+
+// let a = 1;
+// let b = a;
+// // console.log(a);
+// console.log(b);
+// function alpha() {
+//   return (a = 2);
+// }
+
+// function beta() {
+//   console.log(a, "beta");
+// }
+
+// // alpha();
+// console.log(a);
+// beta();
+
+// let two = 1;
+// for (let i = 1; i <= 10; i++) {
+//   two *= 2;
+// }
+// console.log(two);
+// console.log(2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2 * 2);
+// function solution(number) {
+//   var map = {
+//       M: 1000,
+//       CM: 900,
+//       D: 500,
+//       CD: 400,
+//       C: 100,
+//       XC: 90,
+//       L: 50,
+//       XL: 40,
+//       X: 10,
+//       IX: 9,
+//       V: 5,
+//       IV: 4,
+//       I: 1
+//     },
+//     output = "";
+
+//   for (var i in map) {
+//     while (number >= map[i]) {
+//       output += i;
+//       number -= map[i];
+//     }
+//   }
+//   return output;
+// }
+// const a = solution(48);
+// console.log(a);
+
+// function dirReduc(arr) {
+//   let newArr1 = ("north", "south");
+//   let newArr2 = ("east", "west");
+//   let newArr3 = ("south", "north");
+//   let newArr4 = ("west", "east");
+//   // console.log(arr, 0);
+//   for (let i = 0; i < arr.length; i++) {
+//     if (
+//       (arr[i], arr[i + 1] == newArr1) ||
+//       (arr[i], arr[i + 1] == newArr2) ||
+//       (arr[i], arr[i + 1] == newArr3) ||
+//       (arr[i], arr[i + 1] == newArr4)
+//     ) {
+//       arr.splice(i, 2);
+//       // console.log(arr, 1);
+//       // console.log(arr.splice(i, 2), 3);
+//     }
+//   }
+//   // console.log(arr, 2);
+//   return arr;
+// }
+
+// const ab = dirReduc(["south", "north", "east", "north", "west", "south"]);
+// console.log(ab);
+
+// function isSquare(n) {
+//   return Math.sqrt(n) % 1 == 0;
+// }
+
+// let baba = isSquare(36);
+// console.log(baba);
+
+// function vowelsCount(str) {
+//   let vowels = ["a", "e", "i", "o", "u"];
+//   let n = 0;
+//   for (let i = 0; i < str.length; i++) {
+//     for (let j = 0; j < vowels.length; j++) {
+//       if (vowels[j] == str[i]) {
+//         n++;
+//       }
+//     }
+//   }
+//   return n;
+// }
+
+// let baba = vowelsCount("abaeba");
+// console.log(baba);
+
+// function unique(a, b) {
+//   for (let i = 0; i < a.length; i++) {
+//     for (let j = 0; j < b.length; j++) {
+//       if (b[j] == a[i]) {
+//         a.splice(i, 1, null);
+//       }
+//     }
+//   }
+//   return a.filter(n => n !== null);
+// }
+
+// let ba = unique([1, 3, 5, 6, 4, 3], [3, 4]);
+// console.log(ba);
