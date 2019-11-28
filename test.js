@@ -566,3 +566,69 @@
 
 // let ba = unique([1, 3, 5, 6, 4, 3], [3, 4]);
 // console.log(ba);
+
+// let animal = "cat";
+// let str = [...animal];
+// str.splice(0, 1, "r");
+// console.log(str.join(""));
+
+// function min(...args) {
+//   let n = Infinity;
+//   for (let i = 0; i < args.length; i++) {
+//     if (args[i] < n) n = args[i];
+//   }
+//   return n;
+// }
+
+// let n = min(200, 1, 0.4, 56, 6, -0.8, 0.2, 78);
+// console.log(n);
+
+// Complete the compareTriplets function below.
+// function compareTriplets(a, b) {
+//   let c = 0,
+//     d = 0;
+//   if (a[0] < b[0]) {
+//     d++;
+//   } else if (a[0] > b[0]) {
+//     c++;
+//   }
+//   if (a[1] < b[1]) {
+//     d++;
+//   } else if (a[1] > b[1]) {
+//     c++;
+//   }
+//   if (a[2] < b[2]) {
+//     d++;
+//   } else if (a[2] > b[2]) {
+//     c++;
+//   }
+
+//   return [c, d];
+// }
+
+// let a = compareTriplets([1, 2, 3], [3, 2, 1]);
+// console.log(a);
+
+let a = 0,
+  b = 0,
+  c = 0;
+function plusMinus(arr) {
+  let n = arr.length;
+  for (let i = 0; i < n; i++) {
+    if (arr[i] > 0) {
+      a++;
+    } else if (arr[i] < 0) {
+      b++;
+    } else {
+      c++;
+    }
+  }
+
+  a = (a / n).toPrecision(6);
+  b = (b / n).toPrecision(6);
+  c = (c / n).toPrecision(6);
+  return `${a}\n${b}\n${c}\n`;
+}
+
+let n = plusMinus([-4, 3, -9, 0, 4, 1]);
+process.stdout.write(n);

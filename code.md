@@ -522,3 +522,35 @@ i += 1;
 }
 return directions;
 }
+
+Hackerrank Quest.
+Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+
+solution:
+function diagonalDifference(arr) {
+// Write your code
+let n = arr.length,a = 0, b = 0;
+
+for(let i = 0; i < n; i++){
+for(let j = 0; j < n; j++){  
+ if(i == j){
+a += arr[i][j]
+}
+if(i+j == n-1){
+b += arr[i][j]
+}
+}
+}
+return Math.abs(a-b)
+}
+
+ii.function diagonalDifference(arr) {
+// Write your code
+let n = arr.length,a = 0, b = 0;
+
+for(let i = 0; i < n; i++){
+a += arr[i][i]
+b ++ arr[i][n-i-1]
+}
+return Math.abs(a-b)
+}
