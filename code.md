@@ -102,19 +102,17 @@ My Answer: Tried!!!!!!
 
 Good Answer:
 function findOdd(arr) {
-let result;
-let count = 0;
-arr = arr.sort()
+var count = 0;
 for (let i = 0; i < arr.length; i++) {
-if (arr[i] === arr[i +1]) {
+for (let j = 0; j < arr.length; j++) {
+if (arr[i] == arr[j]) {
 count++;
-if (count % 2 != 0) {
-result = arr[i];
-break;
 }
 }
+if (count % 2 !== 0) {
+return arr[i];
 }
-return result;
+}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -280,7 +278,7 @@ Ques 7. count the number of 1 in the binary of any integer
 
 my Answer: function countBits(n) {
 // Program Me
-let bin = n.toString(2);;
+let bin = n.toString(2);
 let count = 0;
 let arr = [...bin];
 
@@ -550,7 +548,94 @@ let n = arr.length,a = 0, b = 0;
 
 for(let i = 0; i < n; i++){
 a += arr[i][i]
-b ++ arr[i][n-i-1]
+b += arr[i][n-i-1]
 }
 return Math.abs(a-b)
+}
+
+Quest: Given an array of integers, calculate the fractions of its elements that are positive, negative, and are zeros. Print the decimal value of each fraction on a new line.
+
+solution: let a = 0,
+b = 0,
+c = 0;
+function plusMinus(arr) {
+let n = arr.length;
+for (let i = 0; i < n; i++) {
+if (arr[i] > 0) {
+a++;
+} else if (arr[i] < 0) {
+b++;
+} else {
+c++;
+}
+}
+
+a = (a / n).toPrecision(6);
+b = (b / n).toPrecision(6);
+c = (c / n).toPrecision(6);
+console.log(`${a}\n${b}\n${c}`);
+}
+
+Ques Hackerrank: Print a staircase of size n using '#' and ' ' characters.
+
+solution:
+
+function main(n){
+var space, hash, stair;
+
+    for (var i = 0; i < n; i++){
+        space = n - 1 - i;
+        hash = i + 1;
+        stair = ' '.repeat(space) + '#'.repeat(hash);
+        console.log(stair);
+    }
+
+}
+
+Ques Codecademy: Write an array that returns the smallest number of two that is greater than given numbers in an array
+solution
+function powerOfTwo(arr) {
+let a = [];
+for (let i = 0; i < arr.length; i++) {
+console.log(arr[i]);
+let power = 2;
+while (arr[i] > power) {
+//remove the slash before the multiplication(caused by the file format)
+power \*= 2;
+}
+a.push(power);
+}
+return a;
+}
+
+Ques. Hackerrank: A left rotation operation on an array shifts each of the array's elements unit to the left. For example, if left rotations are performed on array[1,2,3,4,5], then the array would become [3,4,5,1,2]
+Given an array
+of integers and a number,n ,perform left rotations on the array. Return the updated array to be printed as a single line of space-separated integers.
+
+solution:
+
+function rotLeft(a, d) {
+while (d > 0) {
+d--;
+let c = a.shift();
+a.push(c);
+}
+return a;
+}
+
+Hackerrank: John works at a clothing store. He has a large pile of socks that he must pair by color for sale. Given an array of integers representing the color of each sock, determine how many pairs of socks with matching colors there are.
+For example, there are n=7 socks with colors ar=[1,2,1,2,1,3,2]. There is one pair of color 1 and one of color 2. There are three odd socks left, one of each color. The number of pairs is 2.
+
+solution:
+function sockMerchant(n, ar) {
+let arr1 = [];
+let arr = ar.sort();
+for (let i = 0; i < n; i++) {
+if (arr[i] === arr[i + 1]) {
+arr1.push(arr[i]);
+arr.splice(i, 2, undefined);
+n--;
+}
+}
+return arr1.length;
 }

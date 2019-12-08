@@ -609,26 +609,151 @@
 // let a = compareTriplets([1, 2, 3], [3, 2, 1]);
 // console.log(a);
 
-let a = 0,
-  b = 0,
-  c = 0;
-function plusMinus(arr) {
-  let n = arr.length;
+// let a = 0,
+//   b = 0,
+//   c = 0;
+// function plusMinus(arr) {
+//   let n = arr.length;
+//   for (let i = 0; i < n; i++) {
+//     if (arr[i] > 0) {
+//       a++;
+//     } else if (arr[i] < 0) {
+//       b++;
+//     } else {
+//       c++;
+//     }
+//   }
+
+//   a = (a / n).toPrecision(6);
+//   b = (b / n).toPrecision(6);
+//   c = (c / n).toPrecision(6);
+//   console.log(`${a}\n${b}\n${c}`);
+// }
+
+// let n = plusMinus([-4, 3, -9, 0, 4, 1]);
+// console.log(n);
+
+// function staircase(n) {
+//   let space, hash, stair;
+
+//   for (let i = 0; i < n; i++) {
+//     space = n - 1 - i;
+//     hash = i + 1;
+//     stair = " ".repeat(space) + "#".repeat(hash);
+//     console.log(stair);
+//   }
+// }
+
+// let b = staircase(10);
+
+// function staircase(n) {
+//   let stair,
+//     hash = 0,
+//     space = 0;
+//   for (let i = 0; i < n; i++) {
+//     hash = i + 1;
+//     space = n - i - 1;
+//     stair = " ".repeat(space) + "#".repeat(hash);
+//     console.log(stair);
+//   }
+// }
+
+// function powerOfTwo(arr) {
+//   let a = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     let power = 2;
+//     while (arr[i] > power) {
+//       power *= 2;
+//     }
+//     a.push(power);
+//   }
+//   return a;
+// }
+
+// let b = powerOfTwo([5, 3, 9, 2, 30]);
+// console.log(b);
+
+// function rotLeft(a, d) {
+//   while (d > 0) {
+//     d--;
+//     let c = a.shift();
+//     a.push(c);
+//     console.log(c);
+//   }
+//   return a;
+// }
+
+// const e = rotLeft([1, 2, 3, 4, 5, 6], 4);
+
+// const f = console.log(e);
+
+// var points = [40, 100, 1, 5, 25, 10];
+// let a = points.sort((a, b) => a - b);
+// console.log(a);
+
+// function arr(...array) {
+//   let res = array.filter((a, b, c) => c.indexOf(a) !== b).sort();
+//   console.log(res.length);
+//   if (res.length % 2 == 0) {
+//     console.log("the length of dupliate element is an odd number");
+//     return false;
+//   }
+//   // console.log("the length of duplicate number is even");
+// }
+// arr(1, 2, 2, 1, 5, 4, 4);
+// let counta = {};
+// function sorta(...array) {
+//   let sortedArr = array.sort((a, b) => a - b);
+//   sortedArr.forEach(value => {
+//     counta[value] = (counta[value] || 0) + 1;
+//   });
+//   console.log(counta);
+//   let arrOfObj = Array.of(counta);
+//   console.log(arrOfObj);
+//   arrOfObj.map(object =>
+//     Object.keys(object).filter(value => {
+//       // if (object[value] % 2 == 0) {
+//       //   console.log(value + " have length of even");
+//       //   return value;
+//       // }
+//       if (object[value] % 2 !== 0) {
+//         console.log(value + " have length of odd");
+//         return value;
+//       }
+//     })
+//   );
+// }
+// sorta(7, 7, 5, 5, 6, 6, 8, 9, 1);
+
+// function findOdd(arr) {
+//   var count = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = 0; j < arr.length; j++) {
+//       if (arr[i] == arr[j]) {
+//         count++;
+//       }
+//     }
+//     if (count % 2 !== 0) {
+//       return arr[i];
+//     }
+//   }
+// }
+
+// let a = findOdd([3, 3, 1, 1, 7, 8, 8, 9, 9]);
+// console.log(a);
+
+function sockMerchant(n, ar) {
+  let arr1 = [];
+  let arr = ar.sort();
   for (let i = 0; i < n; i++) {
-    if (arr[i] > 0) {
-      a++;
-    } else if (arr[i] < 0) {
-      b++;
-    } else {
-      c++;
+    if (arr[i] === arr[i + 1]) {
+      arr1.push(arr[i]);
+      arr.splice(i, 2, undefined);
+      n--;
     }
   }
-
-  a = (a / n).toPrecision(6);
-  b = (b / n).toPrecision(6);
-  c = (c / n).toPrecision(6);
-  return `${a}\n${b}\n${c}\n`;
+  return arr1.length;
 }
 
-let n = plusMinus([-4, 3, -9, 0, 4, 1]);
-process.stdout.write(n);
+let b = sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20]);
+console.log(b);
