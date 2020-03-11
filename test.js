@@ -742,18 +742,790 @@
 // let a = findOdd([3, 3, 1, 1, 7, 8, 8, 9, 9]);
 // console.log(a);
 
-function sockMerchant(n, ar) {
-  let arr1 = [];
-  let arr = ar.sort();
-  for (let i = 0; i < n; i++) {
-    if (arr[i] === arr[i + 1]) {
-      arr1.push(arr[i]);
-      arr.splice(i, 2, undefined);
-      n--;
-    }
+// function sockMerchant(n, ar) {
+//   let arr1 = [];
+//   let arr = ar.sort();
+//   for (let i = 0; i < n; i++) {
+//     if (arr[i] === arr[i + 1]) {
+//       arr1.push(arr[i]);
+//       arr.splice(i, 2, undefined);
+//       n--;
+//     }
+//   }
+//   return arr1.length;
+// }
+
+// let b = sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20]);
+// console.log(b);
+
+function arr(...array) {
+  let res = array.filter((a, b, c) => c.indexOf(a) !== b).sort();
+  // console.log(res.length);
+  if (res.length % 2 == 0) {
+    // console.log("the length of dupliate element is an odd number");
+    return false;
   }
-  return arr1.length;
+  // console.log("the length of duplicate number is even");
+}
+arr(1, 2, 3, 2, 1, 4, 4);
+let counta = {};
+function sorta(...array) {
+  let sortedArr = array.sort((a, b) => a - b);
+  sortedArr.forEach(value => {
+    counta[value] = (counta[value] || 0) + 1;
+  });
+  // console.log(counta);
+  let arrOfObj = Array.of(counta);
+  console.log(arrOfObj);
+  let result = arrOfObj
+    .map(object => Object.keys(object).find(value => object[value] % 2 !== 0))
+    .join("");
+  return result;
 }
 
-let b = sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20]);
-console.log(b);
+// console.log(sorta(7, 7, 7, 1, 1, 7, 3, 3, 7, 7,  3, 3));
+
+// function biggestNumber(arr) {
+//   let bigNum = -Infinity;
+//   let b;
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let a of arr[i]) {
+//       if (a > bigNum) {
+//         bigNum = a;
+//       }
+//     }
+//     if (arr[i].indexOf(bigNum) != -1) {
+//       b = i;
+//     }
+//   }
+//   return `${bigNum} is the biggest number and it is in row ${b}`;
+// }
+
+// let b = biggestNumber([
+//   [7, 2, 3],
+//   [4, 25, 3],
+//   [3, 51, 16]
+// ]);
+// console.log(b);
+
+// function valley(n, str) {
+//   let a,
+//     b,
+//     c = 0,
+//     arr = [],
+//     arr1 = [];
+//   for (let i = 0; i < n; i++) {
+//     if (str[i] == "u" || str[i] == "U") {
+//       a = 1;
+//       arr.push(a);
+//     } else {
+//       b = -1;
+//       arr.push(b);
+//     }
+//     let ar = arr.reduce((a, b) => a + b);
+//     arr1.push(ar);
+//     if (arr1[i] == 0 && arr1[i - 1] == -1) c++;
+//   }
+//   return c;
+// }
+
+function valley(n, str) {
+  let a = 0,
+    c = 0;
+  for (let i = 0; i < n; i++) {
+    if (str[i] == "u" || str[i] == "U") {
+      a++;
+    } else {
+      a--;
+      if (a == -1) c++;
+    }
+  }
+  return c;
+}
+
+let b = valley(8, "DDUUUUDD");
+// console.log(b);
+
+// function shuffle(str) {
+//   let strLength = str.length;
+//   let strSplit = [...str];
+//   let randomNumber = Math.floor(Math.random() * strLength);
+//   let randomNumber1 = Math.floor(Math.random() * strLength);
+//   let cut = strSplit.splice(randomNumber, 1);
+//   let cut1 = strSplit.splice(randomNumber1, 2);
+//   return cut1
+//     .concat(cut)
+//     .concat(strSplit)
+//     .join("");
+// }
+
+// // let a = shuffle("garble");
+// // console.log(a);
+
+// function convert(n) {
+//   let roman = {
+//     m: 1000,
+//     cm: 900,
+//     d: 500,
+//     cd: 400,
+//     c: 100,
+//     xc: 90,
+//     l: 50,
+//     xl: 40,
+//     x: 10,
+//     ix: 9,
+//     v: 5,
+//     iv: 4,
+//     i: 1
+//   };
+//   let output = "";
+//   for (let a in roman) {
+//     while (n >= roman[a]) {
+//       output += a;
+//       n -= roman[a];
+//     }
+//   }
+//   return output.toUpperCase();
+// }
+
+// let a = convert(2519);
+// // console.log(a);
+
+// function palinDrome(n) {
+//   let arr = [];
+//   let a = String(n);
+//   for (let i = a.length - 1; i >= 0; i--) {
+//     arr.push(a[i]);
+//   }
+//   console.log(arr);
+//   let newArr = Number(arr.join(""));
+//   if (n === newArr) {
+//     return n;
+//   } else {
+//     while (n !== Number([...String(n)].reverse().join(""))) {
+//       n++;
+//     }
+//     return n;
+//   }
+// }
+
+// let e = palinDrome(20);
+// // console.log(e);
+
+// function arr(str) {
+//   let obj = {};
+//   let n = str.length;
+//   console.log(n);
+//   obj[str] = n;
+//   return obj;
+// }
+
+// let f = arr("aba");
+// console.log(f);
+
+function repeatedString(s, n) {
+  let numAs = 0;
+
+  for (let letter of s) {
+    if (letter == "a") numAs++;
+  }
+
+  let multiples = parseInt(n / s.length);
+
+  numAs *= multiples;
+
+  let remainder = s.slice(0, n % s.length);
+
+  for (let letter of remainder) {
+    if (letter == "a") numAs++;
+  }
+  console.log(s.length);
+  return numAs;
+}
+
+// let f = repeatedString(
+//   "kjgjakajajajajajajalaannanama,aakajana nanahaaba abagagaaaaahahahajaja",
+//   276768769789780
+// );
+// console.log(f);
+
+// function countJump(...array) {
+//   let strConv = String(array)
+//     .split(",")
+//     .join("");
+//   let decimal = Math.floor(Math.log(strConv) / Math.log(10));
+//   console.log(decimal);
+// }
+
+// let x = countJump(0, 0, 0, 1, 0, 0, 1, 0);
+
+// function jumpingOnClouds(c) {
+//   let jump = -1;
+//   for (let i = 0; i < c.length; i++) {
+//     if (c[i] == 0 && c[i + 1] == 0) {
+//       jump++;
+//       i++;
+//       // console.log(i++);
+//       // console.log(c[i], i);
+//     }
+//     if (c[i] == 0 && c[i + 1] != 0) {
+//       jump++;
+//     }
+//   }
+//   return jump;
+// }
+
+// let f = jumpingOnClouds([0, 0, 0, 0, 0, 0, 1, 0, 0, 1]);
+// console.log(f);
+
+// function numberConvert(n) {
+//   let obj = {
+//     twenty: 20,
+//     nineteen: 19,
+//     eighteen: 18,
+//     seventeen: 17,
+//     sixteen: 16,
+//     fifteen: 15,
+//     fourteen: 14,
+//     thiteen: 13,
+//     twelve: 12,
+//     eleveen: 11,
+//     ten: 10,
+//     nine: 9,
+//     eight: 8,
+//     seven: 7,
+//     six: 6,
+//     five: 5,
+//     four: 4,
+//     three: 3,
+//     two: 2,
+//     one: 1
+//   };
+//   let b = "";
+//   for (let a in obj) {
+//     while (n >= obj[a]) {
+//       b += a;
+//       n -= obj[a];
+//     }
+//   }
+//   return b;
+// }
+
+// let d = numberConvert(15);
+// console.log(d);
+
+// function generate(num, string, str) {
+//   let count = 0;
+//   let strArr = Array.apply(null, Array(num)).map(
+//     String.prototype.valueOf,
+//     string
+//   );
+//   let arrConvToStr = String(strArr)
+//     .split(",")
+//     .join("");
+//   let res = arrConvToStr.slice(0, num);
+//   for (let i = 0; i < res.length; i++) {
+//     if (!res[i].indexOf(str)) {
+//       count++;
+//     }
+//   }
+//   console.log(count);
+// }
+// generate(68, "babb", "a");
+
+function arr(n) {
+  let a = " ";
+  let obj = {
+    m: 1000,
+    cm: 900,
+    d: 500,
+    cd: 400,
+    c: 100,
+    xc: 90,
+    l: 50,
+    xl: 40,
+    x: 10,
+    ix: 9,
+    v: 5,
+    iv: 4,
+    I: 1
+  };
+
+  for (let b in obj) {
+    while (n >= obj[b]) {
+      a += b;
+      n -= obj[b];
+    }
+  }
+  return a.toUpperCase();
+}
+
+let x = arr(499);
+// console.log(x);
+
+function jumpingOnClouds(c) {
+  let jump = -1;
+  for (let i = 0; i < c.length; i++) {
+    if (c[i] == 0 && c[i + 1] == 0) {
+      jump++;
+      i++;
+      // console.log(i++, "i");
+    }
+    if (c[i] == 0 && c[i + 1] != 0) {
+      jump++;
+    }
+  }
+  return jump;
+}
+
+let y = jumpingOnClouds([0, 1, 0, 0, 0, 1, 0, 0]);
+// console.log(y);
+
+function factors(n) {
+  let arr = [];
+  for (let i = 0; i <= n; i++) {
+    if (n % i === 0) {
+      arr.push(i);
+    }
+  }
+  return arr.length === 2;
+}
+
+function zeros(n) {
+  let f = 0;
+
+  while (n >= 5) {
+    n = Math.floor(n / 5);
+    f += n;
+    // console.log(n, "n");
+  }
+
+  return f;
+}
+
+function powerOfTwo(arr) {
+  let ar = [];
+  for (let i = 0; i < arr.length; i++) {
+    let n = 1;
+    while (n <= arr[i]) {
+      n *= 2;
+    }
+    ar.push(n);
+  }
+  return ar;
+}
+
+function stairs(n) {
+  let a = 0,
+    b = 0;
+
+  for (let i = 1; i <= n; i++) {
+    a = i;
+    b = n - i;
+    let stair = "#".repeat(a) + "".repeat(b);
+    console.log(stair);
+  }
+}
+
+// stairs(20);
+
+function sock(arr) {
+  arr.sort();
+  let ar = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === arr[i + 1]) {
+      arr.splice(i, 2, undefined);
+      ar.push(arr[i]);
+    }
+  }
+  return ar.length;
+}
+
+// function occur(str, n) {
+//   let c = 0;
+//   let a = Math.floor(n / str.length);
+//   let b = n % str.length;
+//   for (let s of str) {
+//     if (a === "a") {
+//       c+=a
+//     }
+//   }
+
+//   for (let s of str) {
+//     if (a === "a") {
+//       c+=a
+//     }
+//   }
+
+// }
+
+// function occur(str, b) {
+//   let a = Math.floor(b / str.length);
+//   let rem = b % str.length;
+//   let c = 0;
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] === "a") {
+//       c += a;
+//       if (i < rem) {
+//         c++;
+//       }
+//     }
+//   }
+//   return c;
+// }
+
+// function cloud(str, n) {
+//   let count = 0;
+//   let stepsDown = 0;
+//   for (let i = 0; i < n; i++) {
+//     if (str[i] === "D" && stepsDown === 0) {
+//       count++;
+//     }
+//     if (str[i] === "D") {
+//       stepsDown--;
+//     }
+//     if (str[i] === "U") {
+//       stepsDown++;
+//     }
+//   }
+//   return count;
+// }
+
+// function palinDrome(n) {
+//   let arr = [];
+//   let a = [...String(n)].reverse();
+//   let newArr = Number(a.join(""));
+//   if (n === newArr) {
+//     return n;
+//   } else {
+//     while (n !== Number([...String(n)].reverse().join(""))) {
+//       n++;
+//     }
+//     return n;
+//   }
+// }
+
+// function hourGlass(arr) {
+//   let ar = [];
+//   for (let i = 0; i < arr.length - 2; i++) {
+//     for (let j = 0; j < arr[i].length - 2; j++) {
+//       let a =
+//       arr[i][j] +
+//         arr[i][j + 1] +
+//         arr[i][j + 2] +
+//         arr[i + 1][j + 1] +
+//         arr[i + 2][j] +
+//         arr[i + 2][j + 1] +
+//         arr[i + 2][j + 2];
+//       console.log(a);
+//       ar.push(a);
+//     }
+//   }
+//   return Math.max(...ar);
+// }
+
+// function timeConversion(s) {
+//   let index = s.split(":")[0];
+//   let index1 = s.split(":")[1];
+//   let index2 = s.split(":")[2].slice(0, 2);
+
+//   let format = s.slice(-2);
+//   let firstIndex;
+//   if (format === "AM") {
+//     if (index === "12") {
+//       firstIndex = "00";
+//     } else if (index.length === 1) {
+//       firstIndex = "0" + index;
+//     } else {
+//       firstIndex = index;
+//     }
+//   } else {
+//     if (index === "12") {
+//       firstIndex = "12";
+//     } else {
+//       firstIndex = Number(index) + 12;
+//     }
+//   }
+//   let arr = [...s];
+//   index.length === 2 ? arr.splice(0, 2) : arr.splice(0, 1);
+//   arr.splice(-2);
+//   return firstIndex + arr.join("");
+// }
+
+// function kangaroo(x1, v1, x2, v2) {
+//   let a = x1 + v1;
+//   let b = x2 + v2;
+//   let c;
+//   let counter = 0;
+
+//   if (v2 >= v1 && x2 > x1) {
+//     return "NO";
+//   }
+
+//   while (a !== b) {
+//     a += v1;
+//     b += v2;
+//     if (++counter > 10000) {
+//       return "NO";
+//     }
+//   }
+//   if (a == b) {
+//     c = "YES";
+//   } else {
+//     c = "NO";
+//   }
+
+//   return c;
+// }
+[1, 2, 3, 4, 5];
+let d = minimumBribes(5, [2, 1, 5, 3, 4]);
+// console.log(d);
+
+function minimumBribes(q, arr) {
+  let ar = arr.sort();
+  let arr1 = [];
+  for (let i = 0; i < q; i++) {
+    for (let j = 0; j < q; j++) {
+      // console.log(j, "aba");
+      // if (ar[j] === arr[i]) {
+      //   arr1.push(ar[i]);
+      // }
+    }
+  }
+  return arr1;
+}
+
+let position = array => {
+  let arr = [1, 2, 3, 4, 5];
+  let empArr = [];
+  let co = 0;
+  array.forEach((element, i) => {
+    // console.log(arr.indexOf(element));
+    if (arr.includes(array[i])) {
+      if (arr[i] !== array[i]) {
+        i--;
+        if (arr[i] < array[i]) {
+          co++;
+          empArr.push(array[i]);
+        }
+      }
+    }
+  });
+  // console.log(empArr);
+  // console.log(co);
+};
+position([2, 1, 5, 3, 4]);
+
+// function minimumBribes(q) {
+
+//   let bribeCount = []
+//   let high = 0;
+
+//   for (let i = 0; i < q.length; i++) {
+//       let val = q[i]
+//       bribeCount[val] = 0
+//       high = Math.max(val, high)  // update the highest value encountered
+
+//       if (val < high) {
+//           // if current value < high value, increment value for all bribeCount indices > val
+//           for (let j = val + 1; j < bribeCount.length; j++) {
+//               bribeCount[j]++
+//               if (bribeCount[j] > 2) {
+//                   console.log("Too chaotic")
+//                   return;
+//               }
+//           }
+//       }
+//   }
+//   const sum = bribeCount.reduce((a, b) => a + b, 0)  // sum
+//   console.log(sum);
+// }
+
+// function sorter(arr) {
+//   let last;
+//   for (let i = 0; i <= arr.length; i++) {
+//     last = arr.slice(arr.length - 2, arr.length - 1);
+//   }
+//   console.log("last", last);
+//   return last;
+// }
+
+// sorter([1, 2, 4, 5]);
+
+// let vowels = ['a']
+// function alpha
+
+// function sortq(arr) {
+//   console.log(arr);
+//   arr.sort((a, b) => a - b);
+//   return arr;
+// }
+
+// let i = sortq([3, 2, 4, 7]);
+// console.log(i);
+// function factorial(num) {
+//   let sum = 1;
+//   for (let i = num; i >= 1; i--) {
+//     sum *= i;
+//   }
+//   return sum;
+// }
+
+// let n = factorial(3);
+// console.log(n);
+
+// let count = 0;
+// function sen(newArr) {
+//   let vowels = ["a", "e", "i", "o", "u"];
+//   for (let i = 0; i <= newArr.length; i++) {
+//     for (let j = 0; j <= vowels.length; j++) {
+//       if (newArr[i] == vowels[j]) {
+//         count++;
+//       }
+//     }
+//   }
+//   return count;
+// }
+// let babas = sen("weebaa");
+// // console.log(babas);
+
+// var array1 = ["a", "b", "c", "d", "e"];
+// var array2 = ["b", "d", "f"];
+
+// array1 = array1.filter(function(item) {
+//   return !array2.includes(item);
+// });
+
+// console.log(array1, "array1");
+// console.log(array2, "array2");
+
+// function solution(number) {
+//   let map = {
+//       M: 1000,
+//       CM: 900,
+//       D: 500,
+//       CD: 400,
+//       C: 100,
+//       XC: 90,
+//       L: 50,
+//       XL: 40,
+//       X: 10,
+//       IX: 9,
+//       V: 5,
+//       IV: 4,
+//       I: 1
+//     },
+//     output = "";
+
+//   for (let i in map) {
+//     while (number >= map[i]) {
+//       output += i;
+//       number -= map[i];
+//     }
+//   }
+//   return output;
+// }
+
+// countBits = n => {
+//   console.log(n.toString(2).split("0"));
+//   return n
+//     .toString(2)
+//     .split("0")
+//     .join("").length;
+// };
+
+// function isPangram(string) {
+//   let alpha = [
+//     "a",
+//     "b",
+//     "c",
+//     "d",
+//     "e",
+//     "f",
+//     "g",
+//     "h",
+//     "i",
+//     "j",
+//     "k",
+//     "l",
+//     "m",
+//     "n",
+//     "o",
+//     "p",
+//     "q",
+//     "r",
+//     "s",
+//     "t",
+//     "u",
+//     "v",
+//     "w",
+//     "x",
+//     "y",
+//     "z"
+//   ];
+
+//   let arr = [...string.toLowerCase()];
+//   let newArr = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = 0; j < alpha.length; j++) {
+//       if (alpha[j] == arr[i]) {
+//         newArr.push(alpha[j]);
+//       }
+//     }
+//   }
+//   console.log(newArr);
+
+//   let originalArr = [];
+
+//   newArr.map(n => !originalArr.includes(n) && originalArr.push(n));
+
+//   return alpha.length === originalArr.length;
+// }
+
+// function palinDrome(n) {
+//   let arr = [];
+//   let a = String(n);
+//   for (let i = a.length - 1; i >= 0; i--) {
+//     arr.push(a[i]);
+//   }
+//   let newArr = Number(arr.join(""));
+//   console.log(Number([...a].reverse().join("")));
+//   console.log(newArr);
+//   console.log(arr.slice(1));
+
+//   if (n === newArr) {
+//     return n;
+//   } else {
+//     while (n !== Number([...String(n)].reverse().join(""))) {
+//       n++;
+//     }
+//     return n;
+//   }
+// }
+
+// let a = palinDrome(345);
+// console.log(a);
+
+// qualifications = [
+//   { id: 1, name: "boy" },
+//   { id: 2, name: "girl" },
+//   { id: 3, name: "man" },
+//   { id: 4, name: "woman" }
+// ];
+// arr = [1, 1, 2];
+
+// let arr3 = qualifications.filter(item => {
+//   return arr.includes(item.id);
+// });
+
+// console.log(arr3);
+
+function solve(meal_cost, tip_percent, tax_percent) {
+  let tip = (tip_percent / 100) * meal_cost;
+  let tax = (tax_percent / 100) * meal_cost;
+  let cost = meal_cost + tip + tax;
+  return Math.round(cost);
+}
+
+let a = solve(12.0, 20, 8);
+console.log(a);

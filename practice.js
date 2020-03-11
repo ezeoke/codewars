@@ -29,3 +29,7 @@ submit = () => {
 };
 
 btn.addEventListener("click", submit);
+
+//speech
+let respon = new SpeechSynthesisUtterance("chibuike");
+speechSynthesis.speak(respon);
