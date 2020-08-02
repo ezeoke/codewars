@@ -771,14 +771,16 @@ arr(1, 2, 3, 2, 1, 4, 4);
 let counta = {};
 function sorta(...array) {
   let sortedArr = array.sort((a, b) => a - b);
-  sortedArr.forEach(value => {
+  sortedArr.forEach((value) => {
     counta[value] = (counta[value] || 0) + 1;
   });
   // console.log(counta);
   let arrOfObj = Array.of(counta);
   console.log(arrOfObj);
   let result = arrOfObj
-    .map(object => Object.keys(object).find(value => object[value] % 2 !== 0))
+    .map((object) =>
+      Object.keys(object).find((value) => object[value] % 2 !== 0)
+    )
     .join("");
   return result;
 }
@@ -1048,7 +1050,7 @@ function arr(n) {
     ix: 9,
     v: 5,
     iv: 4,
-    I: 1
+    I: 1,
   };
 
   for (let b in obj) {
@@ -1295,7 +1297,7 @@ function minimumBribes(q, arr) {
   return arr1;
 }
 
-let position = array => {
+let position = (array) => {
   let arr = [1, 2, 3, 4, 5];
   let empArr = [];
   let co = 0;
@@ -1528,4 +1530,107 @@ function solve(meal_cost, tip_percent, tax_percent) {
 }
 
 let a = solve(12.0, 20, 8);
-console.log(a);
+// console.log(a);
+
+function processData(input) {
+  // for (let j = 0; j <= input[0]; j++) {
+  let a = "",
+    b = "";
+  for (let i = 0; i < input.length; i++) {
+    if (i % 2 === 0) {
+      a = a + input[i];
+    } else {
+      b = b + input[i];
+    }
+  }
+  console.log(`${a} ${b}`);
+  // }
+}
+
+// processData("rank");
+
+// function getCount(str) {
+//   let vowelsCount = 0;
+//   let vowels = ["a", "e", "i", "o", "u"];
+//   for (let i = 0; i < str.length; i++) {
+//     for (let j = 0; j < vowels.length; j++) {
+//       if (str[i] == vowels[j]) {
+//         vowelsCount++;
+//       }
+//     }
+//   }
+//   return vowelsCount;
+// }
+
+// let vowel = getCount("befejfdjdkjhbjbjhbeeunn");
+// // console.log(vowel);
+
+// function timeConversion(s) {
+//   let index = s.split(":")[0];
+//   let format = s.slice(-2);
+//   let firstIndex;
+
+//   if (format === "AM" || format === "am") {
+//     if (index === "12") {
+//       firstIndex = "00";
+//     } else if (index.length === 1) {
+//       firstIndex = "0" + index;
+//     } else {
+//       firstIndex = index;
+//     }
+//   } else {
+//     if (index === "12") {
+//       firstIndex = "12";
+//     } else {
+//       firstIndex = Number(index) + 12;
+//     }
+//   }
+//   let arr = [...s];
+//   index.length === 2 ? arr.splice(0, 2) : arr.splice(0, 1);
+//   arr.splice(-2);
+//   return firstIndex + arr.join("");
+// }
+
+// let date = [..."2020-06-26T23:00:00.000Z"];
+
+// const biro = date.splice(11, 5, "23:49").join("");
+
+// // const aba = timeConversion("12:00 am");
+// console.log(date.join(""));
+// const time = "23:49 ";
+// time.slice(-1);
+// console.log(
+//   new Date("2020-09-15T23:00:00.000Z").format("MMMM Do YYYY, h:mm:ss a")
+// );
+
+function processData1(input) {
+  //Enter your code here
+  const splitInput = input.split("\n");
+  console.log(splitInput, "split");
+  const phoneBookSize = +splitInput[0];
+  console.log(phoneBookSize, "phone");
+  const inputValue = splitInput.slice(phoneBookSize + 1);
+  console.log(inputValue, "input");
+  const temp = splitInput.slice(1, phoneBookSize + 1).map((list) => {
+    let result = {
+      name: list.split(" ")[0],
+      phoneNumber: list.split(" ")[1],
+    };
+    return result;
+  });
+
+  let phoneBook = [];
+  for (let list of temp) {
+    phoneBook[list.name] = list.phoneNumber;
+  }
+  console.log(phoneBook, "phoneArray");
+
+  for (let name of inputValue) {
+    console.log(name, "name");
+    if (phoneBook[name]) {
+      console.log(`${name}=${phoneBook[name]}`);
+    } else {
+      console.log("Not found");
+    }
+  }
+}

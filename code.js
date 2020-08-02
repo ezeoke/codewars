@@ -896,3 +896,82 @@ function minimumBribes(q) {
  const result = arr.filter(a => {
   return newArr.includes(a);
 });
+
+//Task 
+// Given a string, S, of length N that is indexed from 0 to N-1, print its even-indexed and odd-indexed characters as 2 space-separated strings on a single line (see the Sample below for more detail).
+// Note: 0 is considered to be an even index.
+// Input Format
+// The first line contains an integer, T (the number of test cases). 
+// Each line i of the T subsequent lines contain a String, S .
+
+solution
+
+function processData(input) {
+  //Enter your code here
+   let myArray = input.split('\n');
+for (let i = 1; i <= myArray[0]; i++){
+    let a = "", b = "";
+for (let j = 0; j < myArray[i].length; j++) {
+  if (j % 2 === 0) {
+    a += myArray[i][j];
+  } else {
+    b += myArray[i][j];
+  }
+}
+console.log(`${a} ${b}`);
+}
+} 
+
+//Given an array, A, of N integers, print A's elements in reverse order as a single line of space-separated numbers.
+function arrReverse(n,arr){
+  return arr.reverse().join(' ')
+  }
+
+  //Given n names and phone numbers, assemble a phone book that maps friends' 
+  //names to their respective phone numbers. You will then be given an unknown 
+  //number of names to query your phone book for. For each name queried, print the 
+  //associated entry from your phone book on a new line in the form name=phoneNumber; 
+  //if an entry for name is not found, print Not found instead.
+
+  //copied
+  function processData1(input) {
+    //Enter your code here
+    const splitInput = input.split("\n");
+    console.log(splitInput, "split");
+    const phoneBookSize = +splitInput[0];
+    console.log(phoneBookSize, "phone");
+    const inputValue = splitInput.slice(phoneBookSize + 1);
+    console.log(inputValue, "input");
+    const temp = splitInput.slice(1, phoneBookSize + 1).map((list) => {
+      let result = {
+        name: list.split(" ")[0],
+        phoneNumber: list.split(" ")[1],
+      };
+      return result;
+    });
+  
+    let phoneBook = [];
+    for (let list of temp) {
+      phoneBook[list.name] = list.phoneNumber;
+    }
+    console.log(phoneBook, "phoneArray");
+  
+    for (let name of inputValue) {
+      console.log(name, "name");
+      if (phoneBook[name]) {
+        console.log(`${name}=${phoneBook[name]}`);
+      } else {
+        console.log("Not found");
+      }
+    }
+  }
+  
+  //Write a factorial function that takes a positive integer, N as a parameter and prints the result of N!(N factorial).
+  function factorial(n) {
+
+    if (n === 0)
+   {
+      return 1;
+   }
+    return n * factorial(n-1);
+  }
