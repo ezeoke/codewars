@@ -8,7 +8,7 @@ submit = () => {
   let inputedData = {
     user: username.value,
     school: school.value,
-    state: state.value
+    state: state.value,
   };
 
   let arr = [];
@@ -31,5 +31,5 @@ submit = () => {
 btn.addEventListener("click", submit);
 
 //speech
-let respon = new SpeechSynthesisUtterance("chibuike");
+let respon = new SpeechSynthesisUtterance("High Chief Dominic Ogu Nwamba");
 speechSynthesis.speak(respon);

@@ -1634,3 +1634,22 @@ function processData1(input) {
     }
   }
 }
+
+function factors(n) {
+  let binaryN = n.toString(2);
+  let binary = binaryN.split("0");
+  console.log(binary);
+  let count = 0;
+  let len = 0;
+  for (let n = 0; n < binary.length; n++) {
+    len = binary[n].length;
+    // console.log(len);
+    if (len > count) {
+      count = len;
+    }
+  }
+  return count;
+}
+
+let xa = factors(439);
+// console.log(xa);

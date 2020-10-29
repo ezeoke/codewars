@@ -975,3 +975,145 @@ function arrReverse(n,arr){
    }
     return n * factorial(n-1);
   }
+
+  //Given a base-10 integer, n, convert it to binary (base-2). Then find and print the base-10 integer denoting the maximum number of consecutive 1's in n's binary representation.
+  solution
+  function factors(n) {
+    let binaryN = n.toString(2);
+    let binary = binaryN.split("0");
+    console.log(binary);
+    let count = 0;
+    let len = 0;
+    for (let n = 0; n < binary.length; n++) {
+      len = binary[n].length;
+      if (len > count) {
+        count = len;
+      }
+    }
+    return count;
+  }
+
+  //class Inheritance and abstract classes
+  class Book {
+    constructor(title, author) {
+        if (this.constructor === Book) {
+            throw new TypeError('Do not attempt to directly instantiate an abstract class.'); 
+        }
+        else {
+            this.title = title;
+            this.author = author;
+        }
+    }
+    
+    display() {
+        console.log('Implement the \'display\' method!')
+    }
+}
+
+class MyBook extends Book{
+constructor(author, title, price){
+    super(author, title);
+    this.price = price
+}
+
+display(){
+    console.log(`Title: ${this.title} \nAuthor: ${this.author} \nPrice: ${this.price}`)
+}
+}
+
+//Write a Calculator class with a single method: int power(int,int). The power method takes two integers,n  and p, as parameters and 
+//returns the integer result of n^p. If either n or p is negative, then the method must throw an exception with the message: n and p should be non-negative.
+// Note: Do not use an access modifier (e.g.: public) in the declaration for your Calculator class.
+class Calculator{
+  power(n,p){
+if(n < 0 || p<0){
+throw ('n and p should be non-negative')
+}
+return Math.pow(n, p)
+
+  }
+}
+
+//Given an array, a, of size n distinct elements, sort the 
+// array in ascending order using the Bubble Sort algorithm above. 
+// Once sorted, print the following 3 lines:
+// Array is sorted in numSwaps swaps. 
+// where numSwaps is the number of swaps that took place.
+// First Element: firstElement 
+// where firstElement is the first element in the sorted array.
+// Last Element: lastElement 
+// where lastElement is the last element in the sorted array.
+
+solution
+let numberOfSwaps = 0;
+
+    const bubbleSort = (values) => {
+        let swapped;
+
+        do {
+            swapped = false;
+            
+            for (let i = 0, { length } = values; i < length; i++) {
+                if (values[i] > values[i + 1]) {
+                    let tmp = values[i];
+                    
+                    values[i] = values[i + 1];
+                    values[i + 1] = tmp;
+                    
+                    swapped = true;
+                    numberOfSwaps++;
+                }
+            }
+        } while (swapped);
+
+        return values;
+    };
+
+    let result = bubbleSort(a);
+
+    console.log(`Array is sorted in ${numberOfSwaps} swaps.\nFirst Element: ${result[0]}\nLast Element: ${result[n - 1]}`);
+
+
+    //Complete the insert function in your editor so that it creates 
+    // a new Node (pass  as the Node constructor argument) and inserts it at the 
+    // tail of the linked list referenced by the  parameter. 
+    // Once the new node is added, return the reference to the  node.
+
+    solution
+    this.insert=function(head,data){
+      //complete this method
+    let node = new Node(data);
+    
+    if (!head) {
+        head = node;
+    } else {
+        let current = head;
+    
+        while (current.next != null) {
+            current = current.next;
+        }
+    
+        current.next = node;
+    }
+    
+    return head;
+    };
+
+    //A palindrome is a word, phrase, number, or other sequence of characters which reads the same 
+//  backwards and forwards. Can you determine if a given string, , is a palindrome?
+// To solve this challenge, we must first take each character in , enqueue it in a queue, 
+// and also push that same character onto a stack. Once that's done, we must dequeue the first 
+// character from the queue and pop the top character off the stack, then compare the 
+// two characters to see if they are the same; as long as the characters match, we 
+// continue dequeueing, popping, and comparing each character until our containers are 
+// empty (a non-match means  isn't a palindrome).
+// Write the following declarations and implementations:
+//1. Two instance variables: one for your stack, and one for your queue.
+// A void pushCharacter(char ch) method that pushes a character onto a stack.
+// A void enqueueCharacter(char ch) method that enqueues a character in the queue instance variable.
+// A char popCharacter() method that pops and returns the character at the top of the stack 
+// instance variable.
+// A char dequeueCharacter() method that dequeues and returns the first character in 
+// the queue instance variable.
+
+solution
